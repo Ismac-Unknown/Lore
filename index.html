@@ -1,54 +1,45 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Interactive Blog</title>
-	<link rel="stylesheet" href="style.css">
-  <button class="menu-btn">&#9776;</button>
+  <meta charset="UTF-8">
+  <title>The Sin of Pride</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .cover {
+      text-align: center;
+      border: 4px double white;
+      padding: 3em;
+      max-width: 600px;
+      transition: all 0.5s ease;
+    }
+    .cover:hover {
+      box-shadow: 0 0 20px crimson;
+      cursor: pointer;
+    }
+    .hidden-message {
+      display: none;
+      font-size: 0.8em;
+      color: crimson;
+      margin-top: 1em;
+    }
+    .cover:hover .hidden-message {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-	<header>
-		<h1>What are you doing?</h1>
-	</header>
-	<nav>
-		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">Pages</a></li>
-			<li><a href="#">Journals</a></li>
-		</ul>
-	</nav>
-	<main>
-		<section>
-			<h2>Title</h2>
-			<article>
-				<h3>First Documentation</h3>
-				<p>This journal was started by me, Pride, and kept my my family.</p>
-				<a href="page2.html">Page 2</a>
-			</article>
-			<article>
-				<h3>Wh@t 1S 7H1$?!?!?!</h3>
-				<p>SXRzIGFsbCBnb2luZyB0byBlbmQgc29vbiwgY2xvc2UgeW91ciBleWVzLi4uIEx5ZGlhLi4uIEkgcHJvbWlzZSB5b3UuLi4gZXZlcnl0aGluZyBpcyBnb2luZyB0byBiZSBmaW5lLg==</p>
-				<a href="#">What are you... people?</a>
-			</article>
-		</section>
-		<aside>
-			<h2>Categories</h2>
-			<ul>
-				<li><a href="#">Category 1</a></li>
-				<li><a href="#">Category 2</a></li>
-				<li><a href="#">Category 3</a></li>
-			</ul>
-			<h2>Tags</h2>
-			<ul>
-				<li><a href="#">Tag 1</a></li>
-				<li><a href="#">Tag 2</a></li>
-				<li><a href="#">Tag 3</a></li>
-			</ul>
-		</aside>
-	</main>
-	<footer>
-		<p>&copy; 2023 Interactive Blog</p>
-	</footer>
-	<script src="app.js"></script>
+  <div class="cover" onclick="location.href='page2.html'">
+    <h1>THE JOURNAL</h1>
+    <p>of the First Sin</p>
+    <div class="hidden-message">You should not be here.</div>
+  </div>
 </body>
 </html>
