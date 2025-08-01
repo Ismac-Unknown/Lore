@@ -4,15 +4,14 @@ function typeWriter() {
     i++;
     setTimeout(typeWriter, 15);
   } else {
-    document.getElementById("nextBtn").style.display = "inline-block";
+    document.getElementById("continueContainer").style.display = "block"; // show Continue
+    document.getElementById("skipContainer").style.display = "none"; // hide Skip
   }
 }
 
 function skipText() {
   output.innerHTML += entry.substring(i);
   i = entry.length;
-  document.getElementById("nextBtn").style.display = "inline-block";
-}
-function nextEntry() {
-  window.location.href = "page4.html"; // or wherever the ARG goes after this log
+  document.getElementById("continueContainer").style.display = "block"; // show Continue
+  document.getElementById("skipContainer").style.display = "none"; // hide Skip
 }
