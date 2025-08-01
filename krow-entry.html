@@ -55,10 +55,16 @@
     <div class="faded-heading">Traveler's Log 285-A<br>By Krow Sinclair</div>
   </div>
 
-<div id="navigationButtons" style="display: none;">
+<!-- Skip button: visible immediately -->
+<div id="skipContainer" style="text-align: center; margin-top: 30px;">
   <button onclick="skipText()" id="skipBtn">Skip</button>
+</div>
+
+<!-- Continue button: hidden until typewriter is done -->
+<div id="continueContainer" style="text-align: center; margin-top: 30px; display: none;">
   <button onclick="nextEntry()" id="nextBtn">Continue</button>
 </div>
+
 
   <script src="krow.js"></script>
   <script>
