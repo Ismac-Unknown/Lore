@@ -1,0 +1,110 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Traveler's Log</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: url('images/aged_paper_texture.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Courier New', monospace;
+      color: #3a2d1b;
+      padding: 60px;
+      line-height: 1.6;
+    }
+
+    .log-entry {
+      background: rgba(255, 255, 255, 0.75);
+      padding: 30px;
+      border: 2px solid #57442c;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      max-width: 800px;
+      margin: auto;
+      white-space: pre-wrap;
+    }
+
+    .faded-heading {
+      text-align: center;
+      font-size: 1.5em;
+      opacity: 0.7;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-shadow: 0px 1px 1px #c7bdb0;
+    }
+
+    #navigationButtons {
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    button {
+      background: #57442c;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 1em;
+      cursor: pointer;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="log-entry" id="text">
+    <div class="faded-heading">Traveler's Log 285-A<br>By Krow Sinclair</div>
+  </div>
+
+<div>
+  <button onclick="skipText()" id="skipBtn">Skip</button>
+  <button onclick="nextEntry()" id="nextBtn" style="display: none;">Continue</button>
+</div>
+
+  <script src="krow.js"></script>
+  <script>
+    const output = document.getElementById('text');
+    const entry = `It's been 9 months since the crash landing, and my life is great… I have the most amazing son I could have asked for now, and this gorgeous woman who I parent him with.
+
+Today I found her old journal, and oh my God, it is more interesting than I thought.
+
+She lived through a war in hell… the youngest of her family of the Sin of Pride. Also, apparently her name is Lydia?
+
+She always called herself Pride. I never would have thought she went through so much…
+
+I wish I could have been able to be there back then for her… been there to be by her side…
+
+But I only had time to read one entry, unfortunately. I wonder what lies below the surface of this amazing woman. I'll ask her about it in the morning.
+
+- End Log -`;
+
+    let i = 0;
+    function typeWriter() {
+      if (i < entry.length) {
+        output.innerHTML += entry.charAt(i);
+        i++;
+        setTimeout(typeWriter, 15);
+      } else {
+        document.getElementById("navigationButtons").style.display = "block";
+      }
+    }
+
+    function skipText() {
+      output.innerHTML += entry.substring(i);
+      i = entry.length;
+      document.getElementById("navigationButtons").style.display = "block";
+    }
+
+    function nextEntry() {
+      window.location.href = "page4.html"; // or wherever the next page is
+    }
+
+    // Prevent back navigation
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+      history.go(1);
+    };
+
+    window.onload = typeWriter;
+  </script>
+</body>
+</html>
