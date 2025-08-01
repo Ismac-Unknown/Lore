@@ -39,3 +39,7 @@ body {
 .journal {
   animation: flicker 3s infinite;
 }
+
+html {
+  overflow-y: auto; /* Show vertical scrollbar only when needed */
+}
