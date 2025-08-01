@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  background: url('assets/images/parchment.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Great Vibes', cursive;
+  color: #2c1a1d;
+  overflow: hidden;
+  font-size: 24px;
+}
+
+.journal {
+  padding: 60px;
+  max-width: 800px;
+  margin: auto;
+  background: rgba(255, 248, 220, 0.85);
+  border: 2px solid #4b2e2e;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  margin-top: 50px;
+}
+
+input {
+  background: #1e1e1e;
+  color: #e8d0b8;
+  font-family: monospace;
+  padding: 8px;
+  border: 1px solid #4b2e2e;
+}
+
+button {
+  background: transparent;
+  color: crimson;
+  border: 1px solid crimson;
+  padding: 6px 12px;
+  cursor: pointer;
+}
