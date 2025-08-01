@@ -6,10 +6,10 @@ function checkCode() {
   const correct = "seraphim"; // correct answer
 
   if (input === correct) {
-    result.innerHTML = "Access granted. Proceed to Page 5.";
+    result.innerHTML = "Access granted. Proceed to Page 4.";
     result.style.color = "green";
     setTimeout(() => {
-      window.location.href = "page5.html";
+      window.location.href = "page4.html";
     }, 2000);
   } else {
     failedAttempts++;
