@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>~ Page 4 ~</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="journal">
+    <div class="entry">
+      <h1>~ Page 4 ~</h1>
+      <p>
+        She's left. Or... maybe she's listening.<br>
+        Trace the echoes. <i>The name you once gave her is no longer true.</i><br><br>
+        Decode her from these ruins:
+      </p>
+
+      <ul>
+        <li><a href="pages/song_S.html" target="_blank">Silent Sonar</a></li>
+        <li><a href="pages/song_E.html" target="_blank">Echo in the Flesh</a></li>
+        <li><a href="pages/song_R.html" target="_blank">Requiem for an Ego</a></li>
+        <li><a href="pages/song_A.html" target="_blank">Atonement Loop</a></li>
+        <li><a href="pages/song_P.html" target="_blank">Penance.exe</a></li>
+        <li><a href="pages/song_H.html" target="_blank">Hollow Throne</a></li>
+        <li><a href="pages/song_I.html" target="_blank">Invidia [Ver 0.6]</a></li>
+        <li><a href="pages/song_M.html" target="_blank">My Last Crown</a></li>
+      </ul>
+
+      <p>
+        Enter the name she took:
+      </p>
+
+      <input type="text" id="codeInput" placeholder="________" maxlength="12">
+      <button onclick="checkCode()">Submit</button>
+      <p id="resultMessage"></p>
+    </div>
+  </div>
+
+  <script>
+    function checkCode() {
+      const input = document.getElementById('codeInput').value.trim().toLowerCase();
+      const result = document.getElementById('resultMessage');
+      const correct = "seraphim";
+
+      if (input === correct) {
+        result.innerHTML = "Access granted. Proceeding...";
+        result.style.color = "green";
+        setTimeout(() => {
+          window.location.href = "page5.html";
+        }, 2000);
+      } else {
+        result.innerHTML = "Wrong name. She laughs.";
+        result.style.color = "crimson";
+      }
+    }
+  </script>
+</body>
+</html>
