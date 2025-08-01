@@ -26,7 +26,7 @@ function typeWriter() {
     output.innerHTML += text.charAt(i);
     i++;
 
-    let speed = 30;
+    let speed = 15;
     if (i > text.length * 0.7) speed = 5;
     if (i > text.length * 0.9) speed = 5;
 
