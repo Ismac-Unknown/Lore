@@ -1,62 +1,139 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Location Tracker</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a1a;
-            color: #ffffff;
-            margin: 0;
-            padding: 2em;
-        }
-        h1 {
-            color: #FF0000;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-        }
-        hr {
-            border: 1px solid #FF0000;
-        }
-        p {
-            margin: 0.5em 0;
-        }
-        strong {
-            color: #FF0000;
-        }
-        span {
-            color: #b3b3b3;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Location Tracker (fake)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    body {
+      font-family: 'Share Tech Mono', monospace;
+      background-color: #0b0b0b;
+      color: #ffffff;
+      margin: 0;
+      padding: 2em;
+      overflow: hidden;
+      cursor: url('https://cur.cursors-4u.net/cursors/cur-13/cur1167.cur'), auto;
+    }
+
+    h1 {
+      color: #FF0000;
+      text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+      font-size: 2em;
+      animation: glitch 1s infinite;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px red; }
+      20% { text-shadow: -2px 1px #ff0000; }
+      40% { text-shadow: 2px -2px #800000; }
+      60% { text-shadow: -2px -1px #b30000; }
+      80% { text-shadow: 1px 1px #ff0000; }
+      100% { text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000; }
+    }
+
+    hr {
+      border: 1px solid #FF0000;
+    }
+
+    p {
+      margin: 0.5em 0;
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+    }
+
+    p:nth-child(n+3) { animation-delay: 1s; }
+    p:nth-child(n+4) { animation-delay: 1.5s; }
+    p:nth-child(n+5) { animation-delay: 2s; }
+    p:nth-child(n+6) { animation-delay: 2.5s; }
+    p:nth-child(n+7) { animation-delay: 3s; }
+    p:nth-child(n+8) { animation-delay: 3.5s; }
+    p:nth-child(n+9) { animation-delay: 4s; }
+    p:nth-child(n+10) { animation-delay: 4.5s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    strong {
+      color: #FF0000;
+    }
+
+    span {
+      color: #b3b3b3;
+    }
+
+    #countdown {
+      font-size: 1.2em;
+      margin-top: 1em;
+      color: #FF0000;
+      text-align: center;
+    }
+
+    .static {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif') center center / cover no-repeat;
+      opacity: 0.02;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <h1>They've found you... and you only have so much time:</h1>
-    <hr>
-    <p><strong>IP Address:</strong> <span id="ip_address"></span></p>
-    <p><strong>Country:</strong> <span id="country_name"></span></p>
-    <p><strong>Region:</strong> <span id="region_name"></span></p>
-    <p><strong>City:</strong> <span id="city_name"></span></p>
-    <p><strong>Latitude:</strong> <span id="latitude"></span></p>
-    <p><strong>Longitude:</strong> <span id="longitude"></span></p>
-    <p><strong>Postal Code:</strong> <span id="postal_code"></span></p>
-    <p><strong>Timezone:</strong> <span id="timezone"></span></p>
-    <p><strong>ISP:</strong> <span id="isp"></span></p>
-    <hr>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $.getJSON("https://ipapi.co/json/", function(data) {
-                $("#ip_address").text(data.ip);
-                $("#country_name").text(data.country_name);
-                $("#region_name").text(data.region);
-                $("#city_name").text(data.city);
-                $("#latitude").text(data.latitude);
-                $("#longitude").text(data.longitude);
-                $("#postal_code").text(data.postal);
-                $("#timezone").text(data.timezone);
-                $("#isp").text(data.org);
-            });
-        });
-    </script>
+  <div class="static"></div>
+  <h1>They've found you... and you only have so much time:</h1>
+  <hr>
+  <p><strong>IP Address:</strong> <span id="ip_address"></span></p>
+  <p><strong>Country:</strong> <span id="country_name"></span></p>
+  <p><strong>Region:</strong> <span id="region_name"></span></p>
+  <p><strong>City:</strong> <span id="city_name"></span></p>
+  <p><strong>Latitude:</strong> <span id="latitude"></span></p>
+  <p><strong>Longitude:</strong> <span id="longitude"></span></p>
+  <p><strong>Postal Code:</strong> <span id="postal_code"></span></p>
+  <p><strong>Timezone:</strong> <span id="timezone"></span></p>
+  <p><strong>ISP:</strong> <span id="isp"></span></p>
+  <hr>
+  <div id="countdown">Time remaining: <span id="time">60</span> seconds</div>
+
+  <audio autoplay loop>
+    <source src="https://freesound.org/data/previews/316/316957_4939433-lq.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $.getJSON("https://ipapi.co/json/", function(data) {
+        $("#ip_address").text(data.ip);
+        $("#country_name").text(data.country_name);
+        $("#region_name").text(data.region);
+        $("#city_name").text(data.city);
+        $("#latitude").text(data.latitude);
+        $("#longitude").text(data.longitude);
+        $("#postal_code").text(data.postal);
+        $("#timezone").text(data.timezone);
+        $("#isp").text(data.org);
+      });
+
+      // Countdown timer
+      let timeLeft = 60;
+      const countdownEl = document.getElementById("time");
+      const interval = setInterval(() => {
+        timeLeft--;
+        countdownEl.textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          countdownEl.textContent = "0";
+          document.getElementById("countdown").textContent = "It's too late.";
+        }
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
