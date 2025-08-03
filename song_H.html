@@ -1,1 +1,117 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Hollow Throne</title>
+  <style>
+    body {
+      background: url('A_hand-drawn_ink_illustration_on_sepia-toned,_aged.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Georgia', serif;
+      color: #2a1f0f;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
 
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      text-align: center;
+      background: rgba(255, 248, 232, 0.85);
+      border: 2px solid #7a6240;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+      margin-top: 5vh;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px #c7b6a2;
+    }
+
+    p.prompt {
+      font-size: 1.1em;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 200px;
+      font-size: 1em;
+      border: 1px solid #5a4630;
+      background-color: #f8f2e4;
+      color: #3a2c1d;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      margin-left: 10px;
+      background-color: #5a4630;
+      color: #fff3dd;
+      border: none;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .clue {
+      font-size: 0.95em;
+      color: #53412c;
+      margin-top: 40px;
+      opacity: 0.75;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>The Hollow Throne</h1>
+    <p class="prompt">A humble throne long empty. What name echoes in its absence?</p>
+    <input type="text" id="guess" placeholder="Enter name...">
+    <button onclick="checkAnswer()">Submit</button>
+    <div id="result"></div>
+    <p class="clue">"She rose. He fell. And the throne... remains waiting."</p>
+    <p class="clue">"The First Virtue to Fall, the Last to Rise" </p>
+    <p class="clue">Excerpt recovered from: "The Fifth Inscription, Verse 12 – Virtue Before the Fall" <br>
+    “The throne was once his. Before silence, before sin, there was will.”</p>
+    <p class="clue">Cross-reference: Void Catalog Entry #007, Virtues – “Throne: Unclaimed” <br>
+Classification: Obsolete Dominion. Archive status: Redacted.</p>
+<p class="clue">Annotation found in burned margins of House Pride Scroll A-11: <br>
+“Even Pride bowed, once. She doesn’t remember. But he does.”</p>
+<p class="clue">Last known record from the Traveler’s Journal: <br>
+““He never claimed it. Not because he couldn't… but because he knew he shouldn’t. Perhaps that’s what made him worthy.”</p>
+  </div>
+
+  <script>
+    let attempts = 0;
+    function checkAnswer() {
+      const input = document.getElementById('guess').value.trim().toLowerCase();
+      const result = document.getElementById('result');
+
+      if (input === 'humility') {
+        result.innerHTML = 'Access granted. The Hollow Throne accepts his name.';
+        result.style.color = 'green';
+        setTimeout(() => {
+          window.location.href = 'more_soon.html'; // Placeholder for next page
+        }, 2000);
+      } else {
+        attempts++;
+        result.innerHTML = 'Wrong name. The throne remains silent.';
+        result.style.color = 'crimson';
+
+        if (attempts >= 3) {
+          alert('You feel unworthy. The page collapses.');
+          window.location.href = "forthescare.html";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
