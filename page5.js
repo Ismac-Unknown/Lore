@@ -41,7 +41,7 @@ skipBtn.addEventListener('click', () => {
 
 // Next button logic
 nextBtn.addEventListener('click', () => {
-  window.location.href = 'krow-entry.html'; // adjust filename if needed
+  window.location.href = 'page3.html'; // adjust filename if needed
 });
 
 window.onload = typeWriter;
